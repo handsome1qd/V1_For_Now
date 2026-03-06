@@ -1,6 +1,8 @@
 # 🚀 还是第一版吧 (Project: V1_For_Now) | AAA3A游戏批发
 
 > **团队口号**：AI大人别杀我，我是良民 🏳️ （）—— *Peace, Love, and Agile.*
+> **团队名称**：AAA3A游戏批发
+> **项目名称**：还是第一版吧 (Project: V1_For_Now)
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)
 ![VS Code](https://img.shields.io/badge/VS%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
