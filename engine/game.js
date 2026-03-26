@@ -5,12 +5,12 @@ const CommandHandler = require("./command");
 class Game {
   constructor() {
     this.world = new World();
-    this.player = new Player(this.world.startRoom);
+    this.player = new Player("冒险者", this.world.startRoom);
     this.commandHandler = new CommandHandler(this);
   }
 
   handleInput(input) {
-    this.commandHandler.execute(input);
+    return this.commandHandler.execute(input);
   }
 
   move(direction) {

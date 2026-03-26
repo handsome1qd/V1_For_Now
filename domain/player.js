@@ -1,11 +1,42 @@
 class Player {
-    constructor(startRoom) {
-      this.currentRoom = startRoom;
+  constructor(name, startRoom) {
+    // Backward compatible: allow constructor(startRoom)
+    if (startRoom === undefined) {
+      startRoom = name;
+      name = "冒险者";
     }
-  
-    moveTo(room) {
-      this.currentRoom = room;
-    }
+
+    this.Name = name;
+    this.CurrentRoom = startRoom;
+
+    // Reserved basic attributes for later sprints.
+    this.HP = 100;
+    this.Level = 1;
   }
-  
-  module.exports = Player;
+
+  get name() {
+    return this.Name;
+  }
+
+  set name(value) {
+    this.Name = value;
+  }
+
+  get currentRoom() {
+    return this.CurrentRoom;
+  }
+
+  set currentRoom(room) {
+    this.CurrentRoom = room;
+  }
+
+  moveTo(room) {
+    this.CurrentRoom = room;
+  }
+
+  setCurrentRoom(room) {
+    this.CurrentRoom = room;
+  }
+}
+
+module.exports = Player;
