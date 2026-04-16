@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: Mock API
+  version: 1.0.0
+
+paths:
+  /login:
+    get:
+      summary: 用户登录
+      responses:
+        '200':
+          description: 登录成功
+          content:
+            application/json:
+              example:
+                code: 200
+                message: success
+                data:
+                  username: test_user
+                  token: abc123
