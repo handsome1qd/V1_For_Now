@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: V1_For_Now Game API
+  version: 1.0.0
+  description: |
+    Sprint 2 API contract for core gameplay actions.
+    This contract defines the minimum stable interface between frontend and backend.
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+
+tags:
+  - name: Gameplay
+    description: Core room exploration actions
+
+paths:
+  /look:
+    get:
+      tags: [Gameplay]
+      summary: Observe current room
+      description: Returns the current room description, exits and visible entities.
+      operationId: lookRoom
+      responses:
+        '200':
+          description: Room observation succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LookResponse'
+              examples:
+                ok:
+                  value:
+                    status: ok
+                    roomId: room_start
+                    roomName: 起点
+                    description: 你在起点
+                    exits: [north, east, west, south]
+                    entities: []
+        '400':
+          description: Invalid request context
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /move:
+    post:
+      tags: [Gameplay]
+      summary: Move player to another room
+      description: Move the player through one valid exit direction.
+      operationId: movePlayer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveRequest'
+            examples:
+              north:
+                value:
+                  direction: north
+      responses:
+        '200':
+          description: Move succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveResponse'
+              examples:
+                ok:
+                  value:
+                    status: ok
+                    roomId: room_north
+                    roomName: 北边森林
+                    description: 你在北边森林
+                    exits: [south]
+        '400':
+          description: Invalid direction or blocked movement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_direction:
+                  value:
+                    status: error
+                    code: INVALID_DIRECTION
+                    message: 不能往这个方向走！
+
+components:
+  schemas:
+    MoveRequest:
+      type: object
+      required: [direction]
+      properties:
+        direction:
+          type: string
+          enum: [north, south, east, west]
+
+    LookResponse:
+      type: object
+      required: [status, roomId, roomName, description, exits, entities]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+        roomId:
+          type: string
+        roomName:
+          type: string
+        description:
+          type: string
+        exits:
+          type: array
+          items:
+            type: string
+            enum: [north, south, east, west]
+        entities:
+          type: array
+          items:
+            type: string
+
+    MoveResponse:
+      type: object
+      required: [status, roomId, roomName, description, exits]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+        roomId:
+          type: string
+        roomName:
+          type: string
+        description:
+          type: string
+        exits:
+          type: array
+          items:
+            type: string
+            enum: [north, south, east, west]
+
+    ErrorResponse:
+      type: object
+      required: [status, code, message]
+      properties:
+        status:
+          type: string
+          enum: [error]
+        code:
+          type: string
+        message:
+          type: string
