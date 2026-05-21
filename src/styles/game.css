@@ -1,0 +1,424 @@
+/* ===== 全局样式 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  background: #0a0a1a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== 游戏容器 ===== */
+.game-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== 头部 ===== */
+.game-header {
+  text-align: center;
+  padding: 16px 0;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(100, 200, 255, 0.15);
+}
+
+.game-header h1 {
+  font-size: 28px;
+  background: linear-gradient(135deg, #4a9eff, #7bb8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.game-subtitle {
+  font-size: 14px;
+  color: rgba(100, 200, 255, 0.6);
+  margin-left: 12px;
+}
+
+/* ===== 布局 ===== */
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+  flex: 1;
+}
+
+.game-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.game-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== 区块标题 ===== */
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(100, 200, 255, 0.8);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(100, 200, 255, 0.1);
+}
+
+/* ===== 地图容器 ===== */
+.game-map-container {
+  background: rgba(20, 20, 40, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(100, 200, 255, 0.1);
+}
+
+.game-map-canvas {
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+}
+
+.map-hint {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(100, 200, 255, 0.4);
+  margin-top: 8px;
+}
+
+/* ===== 房间面板 ===== */
+.room-panel {
+  background: rgba(20, 20, 40, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(100, 200, 255, 0.1);
+}
+
+.room-card {
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(123, 184, 255, 0.04));
+  border-radius: 8px;
+  border: 1px solid rgba(74, 158, 255, 0.2);
+}
+
+.room-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4a9eff;
+  margin-bottom: 8px;
+}
+
+.room-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #c0c8d8;
+  margin-bottom: 12px;
+}
+
+.room-exits {
+  margin-top: 8px;
+}
+
+.exits-label {
+  font-size: 13px;
+  color: rgba(100, 200, 255, 0.6);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.direction-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.direction-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background: rgba(74, 158, 255, 0.1);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+  border-radius: 6px;
+  color: #7bb8ff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.direction-btn:hover {
+  background: rgba(74, 158, 255, 0.2);
+  border-color: #4a9eff;
+  transform: translateY(-1px);
+}
+
+.direction-btn:active {
+  transform: translateY(0);
+}
+
+.direction-icon {
+  font-size: 16px;
+}
+
+/* ===== 小地图 ===== */
+.minimap {
+  background: rgba(20, 20, 40, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(100, 200, 255, 0.1);
+}
+
+.minimap-svg {
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* ===== 游戏日志 ===== */
+.game-log {
+  background: rgba(20, 20, 40, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(100, 200, 255, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.log-container {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.log-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.log-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.log-container::-webkit-scrollbar-thumb {
+  background: rgba(74, 158, 255, 0.3);
+  border-radius: 3px;
+}
+
+.log-empty {
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  padding: 20px;
+}
+
+.log-entry {
+  padding: 2px 0;
+  word-break: break-all;
+}
+
+.log-system {
+  color: rgba(100, 200, 255, 0.6);
+  font-style: italic;
+}
+
+.log-command {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.log-info {
+  color: #c0c8d8;
+}
+
+.log-success {
+  color: #4caf50;
+}
+
+.log-error {
+  color: #ff5252;
+}
+
+/* ===== 命令栏 ===== */
+.command-bar {
+  background: rgba(20, 20, 40, 0.8);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(100, 200, 255, 0.1);
+}
+
+.quick-commands {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quick-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(74, 158, 255, 0.1);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+  border-radius: 6px;
+  color: #7bb8ff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.quick-btn:hover {
+  background: rgba(74, 158, 255, 0.2);
+  border-color: #4a9eff;
+}
+
+/* ===== 方向键位 ===== */
+.direction-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.direction-row {
+  display: flex;
+  gap: 4px;
+}
+
+.dir-pad-btn {
+  width: 64px;
+  height: 40px;
+  background: rgba(74, 158, 255, 0.1);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+  border-radius: 6px;
+  color: #7bb8ff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.dir-pad-btn:hover:not(:disabled) {
+  background: rgba(74, 158, 255, 0.2);
+  border-color: #4a9eff;
+}
+
+.dir-pad-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.dir-pad-btn.north {
+  color: #ff9800;
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.dir-pad-btn.south {
+  color: #4caf50;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.dir-pad-btn.east {
+  color: #2196f3;
+  border-color: rgba(33, 150, 243, 0.3);
+}
+
+.dir-pad-btn.west {
+  color: #9c27b0;
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+/* ===== 命令输入 ===== */
+.command-input-form {
+  display: flex;
+  gap: 8px;
+}
+
+.command-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.command-input:focus {
+  border-color: #4a9eff;
+  box-shadow: 0 0 8px rgba(74, 158, 255, 0.2);
+}
+
+.command-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.command-submit {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #4a9eff, #3a7bd5);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.command-submit:hover {
+  background: linear-gradient(135deg, #5aafff, #4a8be5);
+  transform: translateY(-1px);
+}
+
+.command-submit:active {
+  transform: translateY(0);
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 900px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .game-sidebar {
+    order: -1;
+  }
+
+  .game-map-canvas {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 8px;
+  }
+
+  .game-header h1 {
+    font-size: 22px;
+  }
+
+  .dir-pad-btn {
+    width: 56px;
+    height: 36px;
+    font-size: 12px;
+  }
+}

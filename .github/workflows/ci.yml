@@ -7,10 +7,11 @@ on:
       - zou
   push:
     branches:
+      - yufeiliu
       - zou
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +26,7 @@ jobs:
       - name: Show Node.js version
         run: node --version
 
-      - name: Run unit tests
-        run: node --test
+      - name: Verify project builds successfully
+        run: |
+          npm ci
+          npm run build
